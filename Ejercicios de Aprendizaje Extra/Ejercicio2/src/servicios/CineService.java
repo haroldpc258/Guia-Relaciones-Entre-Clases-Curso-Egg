@@ -26,10 +26,10 @@ public class CineService {
         ss.crearSillas(cine.getSalas().get(numeroSala));
     }
 
-    public void llenarSalaEspectadores(Cine cine, SalaService ss, EspectadorService es) {
+    public void llenarSalaEspectadores(Cine cine, SalaService ss, EspectadorService es, int numeroEspectadores) {
 
         int numeroSala = cine.getSalas().size() - 1;
-        ss.llenarEjemplo(cine.getSalas().get(numeroSala), es);
+        ss.llenarEjemplo(cine.getSalas().get(numeroSala), es, numeroEspectadores);
     }
 
     public void asignarPeliculaSala(Cine cine, SalaService ss, PeliculaService ps) {

@@ -15,11 +15,16 @@ public class Ejercicio2 {
 
 
         Cine cine1 = cs.crearCine("CINE CHIQUITO");
-        cs.agregarSala(cine1, ss);
-        cs.asignarPeliculaSala(cine1, ss, ps);
-        cs.asignarPrecioSala(cine1, ss);
-        cs.llenarSalaEspectadores(cine1, ss, es);
-        cs.mostrarSala(cine1, ss, 1);
 
+        cs.agregarSala(cine1, ss);
+
+        cs.asignarPeliculaSala(cine1, ss, ps);
+
+        cs.asignarPrecioSala(cine1, ss);
+
+        int numeroEspectadores = 50;
+        cs.llenarSalaEspectadores(cine1, ss, es, numeroEspectadores);
+
+        cs.mostrarSala(cine1, ss, 1);
     }
 }

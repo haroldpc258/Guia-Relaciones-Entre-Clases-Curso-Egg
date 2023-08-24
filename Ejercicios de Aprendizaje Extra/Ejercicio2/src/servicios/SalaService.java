@@ -20,9 +20,9 @@ public class SalaService {
         }
     }
 
-    public void llenarEjemplo(Sala sala, EspectadorService es) {
+    public void llenarEjemplo(Sala sala, EspectadorService es, int numeroEspectadores) {
 
-        ArrayList<Espectador> espectadores = es.crearEspectadoresEjemplo();
+        ArrayList<Espectador> espectadores = es.crearEspectadoresEjemplo(numeroEspectadores);
 
         for (int i = 0; i < espectadores.size() ; i++) {
             if (!asignarSillaAleatoria(sala, espectadores.get(i))) {
@@ -38,7 +38,7 @@ public class SalaService {
         int columna = (int) (Math.random()*sillas[0].length);
         Silla sillaOcupar = sillas[fila][columna];
 
-        if (isLLena(sala)) {
+        if (verificarDisponibilidadSilla(sala)) {
             if (espectador.getDineroDisponible() >= sala.getPrecioEntrada()) {
                 if (espectador.getEdad() >= sala.getPeliReproduciendo().getEdadMinima()) {
                     if (!sillaOcupar.isOcupada()) {
@@ -65,7 +65,7 @@ public class SalaService {
         return true;
     }
 
-    public boolean isLLena(Sala sala) {
+    private boolean verificarDisponibilidadSilla(Sala sala) {
         return Arrays.stream(sala.getSillas()).anyMatch(filas -> Arrays.stream(filas).anyMatch(s -> !s.isOcupada()));
     }
 

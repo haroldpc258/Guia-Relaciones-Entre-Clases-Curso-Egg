@@ -36,20 +36,18 @@ public class PolizaService {
             poliza = new Poliza(id, cuotas, formaPago, montoAsegurar, tipoCobertura);
         }
 
-        poliza = ajustarCuotas(poliza);
+        ajustarCuotas(poliza);
         id++;
         System.out.println("\nSe ha creado exitosamente la póliza...");
 
         return poliza;
     }
 
-    public Poliza ajustarCuotas(Poliza poliza) {
+    private void ajustarCuotas(Poliza poliza) {
 
         Couta[] cuotas = poliza.getCuotas();
         for (int i = 0; i < cuotas.length; i++) {
             cuotas[i] = new Couta((i + 1), poliza.getValor()/cuotas.length, poliza.getFechaInicio().plusMonths(i + 1), poliza.getFormaPago());
         }
-
-        return poliza;
     }
 }
